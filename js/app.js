@@ -263,3 +263,9 @@ $(() => {
 // win condition
     // highest number of points
 
+
+// Organize Code
+    // Event Handlers
+    // User Interface
+    // Application Logic
+    // https://git.generalassemb.ly/Software-Engineering-Immersive-Remote/SEIR-MAE/blob/master/unit_1/w08d1/instructor_notes/CODE_ORGANIZATION.md
