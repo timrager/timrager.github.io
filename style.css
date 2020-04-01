@@ -1,0 +1,81 @@
+
+
+h6, h5, h4, h3, h2, .card {
+    font-family: 'Baloo 2', cursive;
+    text-shadow: 2px 2px 2px black; /* h-shadow, v-shadow, blur-radius */
+}
+
+h3 {
+    font-size: 1.5em;
+    text-shadow: 5px 5px 5px black;
+    margin: 0;
+
+}
+
+p {
+    font-size: .5em;
+    color: red;
+    text-shadow: 1px 1px 1px black; /* h-shadow, v-shadow, blur-radius */
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr; /* 2 columns */
+    grid-column-gap: .3em;
+    grid-row-gap: .3em;
+    background: #26393D;
+  }
+  
+  .grid {
+    color: #fff;
+    padding: 10px;
+    font-size: 3rem;
+  }
+  
+  .header {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    /* background: #26393D; */
+    background-image: url("images/cards.jpg");
+    background-size: cover;
+    opacity: 0.9;
+ 
+  }
+  
+  .sidebar {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background: #E8E595;
+    width: 200px;
+  }
+  
+  .gameboard {
+    display: grid; /* grid in a grid */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 1em;
+    height: 800px;
+    background: #40627C;
+  }
+  .card {
+    border: 1px solid black;
+    border-radius: 25px;
+    background: #FFFAE4;
+    width: 100px;
+  }
+   
+  .footer {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    background: #26393D; 
+  }  
+  
+  .match {
+    pointer-events: none;
+    border: 5px solid blue;
+  }
+
+  .noMoreClicks {
+    pointer-events: none;
+  }
