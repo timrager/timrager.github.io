@@ -9,10 +9,11 @@ $(() => {
     let secondClick = null; // capture class of second click
     let playerOneScore = 0;
     let playerTwoScore = 0;
-    let playerTurn = 0;
+    let playerTurn = 1;
     let roundDone = null;
-    let checkForFirstClick = null;
-    let checkForSecondClick = null;
+    let clickTarget1 = null;
+    let clickTarget2 = null;
+    let matchCounter = 10;
 
     const cardArr = [
         {
@@ -85,6 +86,9 @@ $(() => {
 
     const generateCards = () => {
 
+        $('.currPlayer').append().text(`Current Player: ${playerTurn}`);
+        $('.matchesLeft').append().text(`Matches left: ${matchCounter}`);
+
         // generate 20 cards
         for (let i=0; i<20; i++){
             
@@ -98,6 +102,7 @@ $(() => {
 
     const shuffleDeck = () => {
         
+
         // Durstenfeld's version of the Fisher-Yates shuffle algorithm
         // https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#The_modern_algorithm
         for (let i = newDeck.length-1; i >= 0; i--){
@@ -118,6 +123,7 @@ $(() => {
             $(`.${placeholder}`).append(`<div class="frontCard ${newDeck[i].name}">`);
             $(`.${placeholder}`).children().append(`<p>${newDeck[i].value}</p>`);
             $(`.${placeholder}`).children().append(`<p>${newDeck[i].symbol}</p>`);
+            $(`.${placeholder}`).children().addClass('hideCard');
             $(`.${placeholder}`).append('<div class="backCard">');
 
 
@@ -165,17 +171,21 @@ $(() => {
             if (clickCheck === true){ 
                 // checkForSecondClick = $(event.currentTarget).addClass('clicked')
                 $(event.currentTarget).addClass('noMoreClicks')
+                $(event.currentTarget).children(1).removeClass('hideCard')
+                clickTarget1 = $(event.currentTarget)
                 secondClick = $value[1];
                 roundDone = true;
             }else {
                 // checkForFirstClick =$(event.currentTarget).addClass('clicked')
                 $(event.currentTarget).addClass('noMoreClicks')
+                $(event.currentTarget).children(1).removeClass('hideCard')
+                clickTarget2 = $(event.currentTarget)
                 firstClick = $value[1];            
                 clickCheck = true;
             }
 
-            console.log(firstClick);
-            console.log(secondClick);
+            // console.log(firstClick);
+            // console.log(secondClick);
 
 
             // make sure to only capture 2 clicks.  Otherwise 3rd click should be "first" click.
@@ -191,32 +201,65 @@ $(() => {
     } // end of playMatch
 
     const checkRound = () => {
+
         if (roundDone === true) {
             if (firstClick === secondClick){
+ 
                 console.log("you have a match!")
+
                 $('.noMoreClicks').addClass('match')
                 if (playerTurn === 1){
+                    
                     playerOneScore++
                     console.log('playerOne ' + playerOneScore);
                     $('.p1Score').empty().append(`Score: ${playerOneScore}`)
                 } else {
+
                     playerTwoScore++
                     console.log('playerTwo ' + playerTwoScore);
-                    $('.p2Score').empty().append(`Score: ${playerOneScore}`)
+                    $('.p2Score').empty().append(`Score: ${playerTwoScore}`)
                 }
+                matchCounter--; // Matches left 
+                $('.matchesLeft').append().text(`Matches left: ${matchCounter}`);
+
+                if (matchCounter === 0) {
+                    endMatch();
+                }
+
+
+                console.log(matchCounter);
             } else {
                 // $('.clicked').removeClass('clicked')
+
                 console.log("No match, next player turn")
+
                 if (playerTurn === 1){
                     playerTurn = 2;
+                    $('.currPlayer').append().text(`Current Player: ${playerTurn}`);
                 } else {
                     playerTurn = 1;
+                    $('.currPlayer').append().text(`Current Player: ${playerTurn}`);
                 }
+
+                setTimeout( () => {
+                    $(clickTarget1).find('.frontCard').addClass('hideCard')
+                    $(clickTarget2).find('.frontCard').addClass('hideCard')
+                }, 2000)
+                
             }
         $('.card').removeClass('noMoreClicks')
-        // $('.card').removeClass('clicked')
+
         }
 
+    }
+
+    const endMatch = () => {
+        let playAgain = prompt("Want to play again?", "Y/N")
+        if (playAgain === "Y" || playAgain === "y") {
+            location.reload(true);
+        } else {
+            return;
+        }
     }
 
 
@@ -229,8 +272,15 @@ $(() => {
     shuffleDeck();
     //shuffleDeckSecond();
 
-    playerTurn = 1;
     playMatch();
+
+
+    // $('.beginGame').on('click', () => {
+    //     console.log('go');
+    //     playMatch();
+    // });
+    
+
 
 
 
@@ -242,30 +292,21 @@ $(() => {
 
 
 
-// generate 10-card board
-    // grid board
-    // make each area clickable
-    // randomly place cards on table
-    // display cards before game starts
-    // hide all cards when game starts
+// Game must have:
 
-// player 1 
-    // click a card to reveal
-    // remember this card
-    // click a second card to reveal
-        // if matches, add a point, repeat
-        // if not, go to player two
+// Must be a two player game (either against the computer or against another player)
+// Example: Blackjack: A player plays against the dealer. The dealer is the computer
+// Example: Connect Four: Two players pass the game between themselves to take turns
 
+// A win state - a way for the player to win the game
+// High score can be considered a win state 
 
-// player 2
-    // do the same as player 1
+// A lose state - a way for the player to lose the game
+// Example: Blackjack - a player must be able to lose all of their money with losing hands and cannot play if their bankroll is at 0
+// Example: Connect Four - the other player has won or there are no possible plays left
 
-// win condition
-    // highest number of points
+// A way to keep playing if the game is not over
 
-
-// Organize Code
-    // Event Handlers
-    // User Interface
-    // Application Logic
-    // https://git.generalassemb.ly/Software-Engineering-Immersive-Remote/SEIR-MAE/blob/master/unit_1/w08d1/instructor_notes/CODE_ORGANIZATION.md
+// Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
+// Example: Blackjack: a player takes turns playing a hand versus a computer - the player's hand can either win, lose or tie the dealer. If the player has enough money in their bankroll they can keep playing. A player must be able to win several rounds and increase their bankroll
+// Example: Connect Four: two (non-computer) players take turns adding chips to the board. The game will check if a player won or if the board is full and there are no more plays possible. A player gets four chips in a row (vertically or horizontally)- one person wins, one loses, there are no further plays in this case
