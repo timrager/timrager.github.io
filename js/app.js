@@ -147,8 +147,6 @@ $(() => {
             $(`.${placeholder}`).children().append(`<p>${newDeck[i].symbol}</p>`);
             $(`.${placeholder}`).children().addClass('hideCard');
             $(`.${placeholder}`).append('<div class="backCard">');
-
-
         } // end for loop
     } // end shuffleDeck()
 
@@ -193,9 +191,8 @@ $(() => {
     const checkRound = () => {
         // check to see if the round is done; 2 card played
         if (roundDone === true) {
+            // if there is a match between 2 cards
             if (firstClick === secondClick){
- 
-                console.log("you have a match!")
                 // match class will prevent cards from being clicked on
                 $('.noMoreClicks').addClass('match')
                 if (playerTurn === 1){
@@ -207,11 +204,13 @@ $(() => {
                     playerTwoScore++
                     $('.p2Score').empty().append(`Score: ${playerTwoScore}`)
                 }
+                
                 matchCounter--; // Matches left 
                 $('.matchesLeft').append().text(`Matches left: ${matchCounter}`);
                 if (matchCounter === 0) {
                     endMatch(); // end the game if matches are all done
                 }
+
             } else {
                 // check turns; swap players if no matches
                 if (playerTurn === 1){
@@ -221,11 +220,11 @@ $(() => {
                     playerTurn = 1;
                     $('.currPlayer').append().text(`Current Player: ${playerTurn}`);
                 }
-                // wait 2 seconds, re-hide cards if there's no match
+                // wait 1.5 seconds, re-hide cards if there's no match
                 setTimeout( () => {
                     $(clickTarget1).find('.frontCard').addClass('hideCard')
                     $(clickTarget2).find('.frontCard').addClass('hideCard')
-                }, 2000)
+                }, 1500)
             } // end of if for checking matches
         $('.card').removeClass('noMoreClicks') // remove class if no matches so they can be played again
         } // end if for roundDone
