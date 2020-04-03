@@ -129,10 +129,10 @@ $(() => {
         // https://en.wikipedia.org/wiki/Fisher–Yates_shuffle#The_modern_algorithm
         for (let i = newDeck.length-1; i >= 0; i--){
 
-            let scratchNum = 0;
-            let resultNum = 0;
+            let scratchNum = 0; // bucket for swaps
+            let resultNum = 0; // bucket for swaps
 
-            let rollNum = (Math.floor(Math.random() * i));
+            let rollNum = (Math.floor(Math.random() * i));  // pick a random number that will be used with newDeck
 
             // swap out newDeck index with random place in array
             resultNum = newDeck[rollNum];
