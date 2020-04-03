@@ -15,25 +15,20 @@ h4 {
   font-size: .5em;
 }
 
-p {
-    font-size: .5em;
-    color: red;
-    text-shadow: 1px 1px 1px black; /* h-shadow, v-shadow, blur-radius */
-    margin: 0;
-}
-
 .container {
     display: grid;
     grid-template-columns: 1fr 4fr; /* 2 columns */
     grid-column-gap: .3em;
     grid-row-gap: .3em;
     background: #26393D;
+
   }
   
   .grid {
     color: #fff;
     padding: 10px;
     font-size: 3rem;
+
   }
   
   .header {
@@ -58,10 +53,11 @@ p {
     display: grid; /* grid in a grid */
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 1em;
     height: 800px;
     background: #40627C;
     margin-right: 5px;
+    align-items: center;
+    justify-items: center;
   }
 
   .card {
@@ -71,29 +67,94 @@ p {
     width: 100px;
   }
 
-  .p1Score, .p2Score {
+  .hearts {
+    font-size: .5em;
     color: red;
-  }
+    text-shadow: 1px 1px 1px black; /* h-shadow, v-shadow, blur-radius */
+    text-align: center;
+    margin: 0;
+}
 
-  /* .hideCard{
-    visibility: hidden;
-  } */
+.spades {
+  font-size: .5em;
+  color: black;
+  text-shadow: 1px 1px 1px black; /* h-shadow, v-shadow, blur-radius */
+  text-align: center;
+  margin: 0;
+}
+
+.p1Score, .p2Score {
+  color: red;
+}
+
+.hideCard{
+  visibility: hidden;
+}
    
-  .footer {
-    grid-column: 1/3;
-    grid-row: 3/4;
-    background: #26393D; 
-  }  
+.footer {
+  grid-column: 1/3;
+  grid-row: 3/4;
+  background: #26393D; 
+}  
   
-  .match {
-    pointer-events: none;
-    /* border: 5px solid blue; */
+.match {
+  pointer-events: none;
+  /* border: 5px solid blue; */
+}
+
+.noMoreClicks {
+  pointer-events: none;
+}
+
+.currPlayer, .matchesLeft{
+  color: orange;
+}
+
+  #modal {
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    /*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+    overflow: auto;
+    /*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
+    display: none;
   }
 
-  .noMoreClicks {
-    pointer-events: none;
+  #modal-textbox {
+    background-color: white;
+    color: #40627C;;
+    height: 350px;
+    width: 550px;
+    border-radius: 2px;
+    margin: 150px auto;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.9);
+    padding: 2%;
+
   }
 
-  .currPlayer, .matchesLeft{
-    color: orange;
+  .modal-text {
+    font-family: 'Baloo 2', cursive;
+    color: black;
+    font-size: .4em;
+    margin: 0;
+    padding: 0;
+  }
+
+  #modal-footer {
+    text-align: right;
+  }
+  
+  .modal-buttons {
+    padding: 14px 18px;
+    background-color: #40627C;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    color: white;
+    font-family: 'Arial';
+    cursor: pointer;
   }
