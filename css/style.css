@@ -67,6 +67,7 @@ h4 {
     width: 100px;
   }
 
+
   .hearts {
     font-size: .5em;
     color: red;
@@ -90,7 +91,6 @@ h4 {
 .hideCard{
   visibility: hidden;
 }
-   
 
 .footer {
   grid-column: 1/3;

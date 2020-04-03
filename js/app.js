@@ -164,17 +164,15 @@ $(() => {
             
             // logic to check if you are in turn 1 or turn 2
             if (clickCheck === true){ 
-                // checkForSecondClick = $(event.currentTarget).addClass('clicked')
-                $(event.currentTarget).addClass('noMoreClicks')
-                $(event.currentTarget).children(1).removeClass('hideCard')
-                clickTarget1 = $(event.currentTarget)
+                $(event.currentTarget).addClass('noMoreClicks');
+                $(event.currentTarget).children(1).removeClass('hideCard');
+                clickTarget1 = $(event.currentTarget);
                 secondClick = $value[1];
                 roundDone = true;
             }else {
-                // checkForFirstClick =$(event.currentTarget).addClass('clicked')
-                $(event.currentTarget).addClass('noMoreClicks')
-                $(event.currentTarget).children(1).removeClass('hideCard')
-                clickTarget2 = $(event.currentTarget)
+                $(event.currentTarget).addClass('noMoreClicks');
+                $(event.currentTarget).children(1).removeClass('hideCard');
+                clickTarget2 = $(event.currentTarget);
                 firstClick = $value[1];            
                 clickCheck = true;
             }
@@ -194,17 +192,16 @@ $(() => {
             // if there is a match between 2 cards
             if (firstClick === secondClick){
                 // match class will prevent cards from being clicked on
-                $('.noMoreClicks').addClass('match')
+                $('.noMoreClicks').addClass('match');
                 if (playerTurn === 1){
                     // update player1 score
-                    playerOneScore++
-                    $('.p1Score').empty().append(`Score: ${playerOneScore}`)
+                    playerOneScore++;
+                    $('.p1Score').empty().append(`Score: ${playerOneScore}`);
                 } else {
                     // update player2 score
-                    playerTwoScore++
-                    $('.p2Score').empty().append(`Score: ${playerTwoScore}`)
+                    playerTwoScore++;
+                    $('.p2Score').empty().append(`Score: ${playerTwoScore}`);
                 }
-                
                 matchCounter--; // Matches left 
                 $('.matchesLeft').append().text(`Matches left: ${matchCounter}`);
                 if (matchCounter === 0) {
@@ -222,11 +219,11 @@ $(() => {
                 }
                 // wait 1.5 seconds, re-hide cards if there's no match
                 setTimeout( () => {
-                    $(clickTarget1).find('.frontCard').addClass('hideCard')
-                    $(clickTarget2).find('.frontCard').addClass('hideCard')
+                    $(clickTarget1).find('.frontCard').addClass('hideCard');
+                    $(clickTarget2).find('.frontCard').addClass('hideCard');
                 }, 1500)
             } // end of if for checking matches
-        $('.card').removeClass('noMoreClicks') // remove class if no matches so they can be played again
+        $('.card').removeClass('noMoreClicks'); // remove class if no matches so they can be played again
         } // end if for roundDone
     } // end checkRound()
 
@@ -240,7 +237,7 @@ $(() => {
             alert ("It's a TIE!");
         }
         // prompt to start game again or quit
-        let playAgain = prompt("Want to play again?", "Y/N")
+        let playAgain = prompt("Want to play again?", "Y/N");
         if (playAgain === "Y" || playAgain === "y") {
             location.reload(true);
         } else {
