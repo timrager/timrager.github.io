@@ -5,7 +5,7 @@
 ## Technology Used
 
 ## Wireframe
-![]mockup.png
+![](mockup.png)
 
 ## Code Organization
 
