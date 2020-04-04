@@ -164,13 +164,13 @@ $(() => {
             
             // logic to check if you are in turn 1 or turn 2
             if (clickCheck === true){ 
-                $(event.currentTarget).addClass('noMoreClicks').effect('highlight');
+                $(event.currentTarget).addClass('noMoreClicks').effect('highlight').effect('shake', {direction: 'up', times: 2, distance: 3});
                 $(event.currentTarget).children(1).removeClass('hideCard');
                 clickTarget1 = $(event.currentTarget);
                 secondClick = $value[1];
                 roundDone = true;
             }else {
-                $(event.currentTarget).addClass('noMoreClicks').effect('highlight');
+                $(event.currentTarget).addClass('noMoreClicks').effect('highlight').effect('shake', {direction: 'up', times: 2, distance: 3});
                 $(event.currentTarget).children(1).removeClass('hideCard');
                 clickTarget2 = $(event.currentTarget);
                 firstClick = $value[1];            
