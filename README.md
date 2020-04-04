@@ -5,8 +5,8 @@ A simple, 2 player game where players have to match 2 cards to collect points (i
 The person with the most points at the end of the round wins the game. 
 
 ### Technology Used
-* jQuery
-* jQueryUI
+* JavaScript
+* jQuery/jQueryUI
 * HTML/CSS/Flexbox
 
 ### Wireframe
