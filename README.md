@@ -38,4 +38,5 @@ The person with the most points at the end of the round wins the game.
 * Also would like to have better designed cards, make it more realistic to a actual playing card. Additional animations or visual guides to notate who's turn it is, for example, would be helpful as well. 
 * Code may need to be refactored for slight visual bug; when game is almost complete, last matching pair doesn't dim and the final score until prompts to continue are completed. 
 * Cards are still clickable during delay of a non-matched set.  They should not be.
+* Adding sound effects when clicking cards, when matches are made, etc.
 
