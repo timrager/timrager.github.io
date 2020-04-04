@@ -186,6 +186,7 @@ $(() => {
         }) // end of on click
     } // end of playMatch
 
+    // function to check if there's a card match and give points
     const checkRound = () => {
         // check to see if the round is done; 2 card played
         if (roundDone === true) {
@@ -227,6 +228,7 @@ $(() => {
         } // end if for roundDone
     } // end checkRound()
 
+    // function to check who is the winner and ask to play again
     const endMatch = () => {
         // check to see who has the highest score
         if (playerOneScore > playerTwoScore){
