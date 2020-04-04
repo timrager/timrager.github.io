@@ -6,6 +6,7 @@ The person with the most points at the end of the round wins the game.
 
 ### Technology Used
 * jQuery
+* jQueryUI
 * HTML/CSS/Flexbox
 
 ### Wireframe
