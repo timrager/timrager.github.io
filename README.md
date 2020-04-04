@@ -4,6 +4,9 @@
 A simple, 2 player game where players have to match 2 cards to collect points (i.e. a successful pick of matching cards provides 1 point).
 The person with the most points at the end of the round wins the game. 
 
+### Project Link
+![Unit1 Project](https://github.com/timrager/timrager.github.io)
+
 ### Technology Used
 * JavaScript
 * jQuery/jQueryUI
